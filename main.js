@@ -1,16 +1,13 @@
 // main.js
 
-const { gregorianToTonalpohualli, gregorianToXiuhpohualli } = require('./aztec_calendar');
+import { gregorianToAztec } from './aztec_calendar.js';
 
 function convertDate() {
     const gregorianDate = new Date(document.getElementById('gregorian-date').value);
-    const tonalpohualliDate = gregorianToTonalpohualli(gregorianDate);
-    const xiuhpohualliDate = gregorianToXiuhpohualli(gregorianDate);
+    const aztecDate = gregorianToAztec(gregorianDate);
 
-    document.getElementById('tonalpohualli-date').innerHTML = 
-        `Tonalpohualli: ${tonalpohualliDate.day} ${tonalpohualliDate.name}`;
-    document.getElementById('xiuhpohualli-date').innerHTML = 
-        `Xiuhpohualli: ${xiuhpohualliDate.month} ${xiuhpohualliDate.day}`;
+    document.getElementById('aztec-date').innerHTML = 
+        `Aztec Date: ${aztecDate.dayNumber} ${aztecDate.dayName}, ${aztecDate.month}`;
 }
 
 document.getElementById('gregorian-date').addEventListener('change', convertDate);
